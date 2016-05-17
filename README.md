@@ -38,6 +38,8 @@ TW: `zh_TW`
 
 `Wowrb.auction_url(realm_name)` returns url and last modified time for given realm.
 
+`Wowrb.item(item_id)` returns given item information.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Freika/wowrb.
