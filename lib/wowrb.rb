@@ -4,7 +4,7 @@ require 'httparty'
 
 module Wowrb
   include HTTParty
-  
+
   def self.achievement(achievement_id)
     remote_url = "#{url}/achievement/#{achievement_id}?#{credentials}"
     call_api(remote_url)
@@ -20,8 +20,6 @@ module Wowrb
     call_api(remote_url)
   end
 
-  private
-
   def self.config
     Wowrb::Config.new(
       api_key: ENV['BATTLE_NET_KEY'],
@@ -33,14 +31,17 @@ module Wowrb
   def self.url
     "https://#{Wowrb.config.region}.api.battle.net/wow"
   end
+  private_class_method :url
 
   def self.credentials
     "locale=#{Wowrb.config.locale}&apikey=#{Wowrb.config.api_key}"
   end
+  private_class_method :credentials
 
   def self.call_api(remote_url)
     encoded_url = URI.encode(remote_url)
     response = HTTParty.get(encoded_url)
     JSON.parse(response.body)
   end
+  private_class_method :call_api
 end
