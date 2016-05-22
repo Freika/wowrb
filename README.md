@@ -36,6 +36,8 @@ TW: `zh_TW`
 
 ## Usage
 
+`Wowrb.achievement(achievement_id)` returns given achievement information.
+
 `Wowrb.auction_url(realm_name)` returns url and last modified time for given realm.
 
 `Wowrb.item(item_id)` returns given item information.
