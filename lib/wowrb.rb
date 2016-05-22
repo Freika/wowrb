@@ -4,6 +4,11 @@ require 'httparty'
 
 module Wowrb
   include HTTParty
+  
+  def self.achievement(achievement_id)
+    remote_url = "#{url}/achievement/#{achievement_id}?#{credentials}"
+    call_api(remote_url)
+  end
 
   def self.auction_url(realm_name)
     remote_url = "#{url}/auction/data/#{realm_name}?#{credentials}"
