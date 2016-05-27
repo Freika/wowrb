@@ -30,6 +30,11 @@ module Wowrb
     call_api(remote_url)
   end
 
+  def self.region_leaderboard()
+    remote_url = "#{url}/challenge/region?#{credentials}"
+    call_api(remote_url)
+  end
+
   def self.item(item_id)
     remote_url = "#{url}/item/#{item_id}?#{credentials}"
     call_api(remote_url)
