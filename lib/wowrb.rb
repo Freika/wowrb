@@ -20,7 +20,7 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.boss_master_list()
+  def self.boss_list
     remote_url = "#{url}/boss/?#{credentials}"
     call_api(remote_url)
   end
