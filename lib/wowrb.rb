@@ -25,6 +25,11 @@ module Wowrb
     call_api(remote_url)
   end
 
+  def self.region_leaderboard
+    remote_url = "#{url}/challenge/region?#{credentials}"
+    call_api(remote_url)
+  end
+
   def self.leaderboard_for(realm_name)
     remote_url = "#{url}/challenge/#{realm_name}?#{credentials}"
     call_api(remote_url)
