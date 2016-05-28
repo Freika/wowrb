@@ -20,17 +20,7 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.boss_master_list()
-    remote_url = "#{url}/boss/?#{credentials}"
-    call_api(remote_url)
-  end
-
-  def self.realm_leaderboard(realm_leaderboard_id)
-    remote_url = "#{url}/challenge/#{realm_leaderboard_id}?#{credentials}"
-    call_api(remote_url)
-  end
-
-  def self.region_leaderboard()
+  def self.region_leaderboard
     remote_url = "#{url}/challenge/region?#{credentials}"
     call_api(remote_url)
   end
