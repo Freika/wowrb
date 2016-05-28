@@ -35,11 +35,15 @@ module Wowrb
     call_api(remote_url)
   end
 
-   def self.character(realm, character_name)
+  def self.character(realm, character_name)
     remote_url = "#{url}/character/#{realm}/#{character_name}?#{credentials}"
     call_api(remote_url)
   end
-  #https://us.api.battle.net/wow/character/test-realm/Peratryn?locale=en_US&apikey=v27ddwcdspbj2cb3uj9h3yvss7qeu7gc
+
+  def self.achievements(realm, character_name, fields)
+    remote_url = "#{url}/character/#{realm}/#{character_name}?fields=#{fields}&#{credentials}"
+    call_api(remote_url)
+  end
 
   def self.item(item_id)
     remote_url = "#{url}/item/#{item_id}?#{credentials}"
