@@ -20,6 +20,11 @@ module Wowrb
     call_api(remote_url)
   end
 
+  def self.boss_list
+    remote_url = "#{url}/boss/?#{credentials}"
+    call_api(remote_url)
+  end
+
   def self.item(item_id)
     remote_url = "#{url}/item/#{item_id}?#{credentials}"
     call_api(remote_url)
