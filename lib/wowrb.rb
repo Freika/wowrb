@@ -31,12 +31,16 @@ module Wowrb
   end
 
   def self.character(realm, character_name, fields = nil)
-    remote_url = "#{url}/character/#{realm}/#{character_name}?fields=#{fields}&#{credentials}"
+	remote_url = "#{url}/character/#{realm}/#{character_name}?"
+	remote_url += "fields=#{fields}&" if fields
+	remote_url += "#{credentials}"
     call_api(remote_url)
   end
-
+    
   def self.guild(realm, guild_name, fields = nil)
-    remote_url = "#{url}/guild/#{realm}/#{guild_name}?fields=#{fields}&#{credentials}"
+  	remote_url = "#{url}/guild/#{realm}/#{guild_name}?"
+	remote_url += "fields=#{fields}&" if fields
+	remote_url += "#{credentials}"
     call_api(remote_url)
   end
 
@@ -71,7 +75,11 @@ module Wowrb
   end
 
   def self.pet_stats(stats_id, level, breed_id, quality_id)
-    remote_url = "#{url}/pet/stats/#{stats_id}?level=#{level}&breedId=#{breed_id}&qualityId=#{quality_id}&#{credentials}"
+  	remote_url = "#{url}/pet/stats/#{stats_id}?"
+	remote_url += "level=#{fields}&" if level
+	remote_url += "breedId=#{breed_id}&" if breed_id
+	remote_url += "qualityId=#{quality_id}&" if quality_id
+	remote_url += "#{credentials}"
     call_api(remote_url)
   end
 
@@ -110,12 +118,12 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.data_character(parametr) #передать параметр races/classes/achievements
+  def self.data_character(parametr)
     remote_url = "#{url}/data/character/#{parametr}?#{credentials}"
     call_api(remote_url)
   end
 
-  def self.data_guild(parametr) #передать параметр rewards/perks/achievements
+  def self.data_guild(parametr)
     remote_url = "#{url}/data/guild/#{parametr}?#{credentials}"
     call_api(remote_url)
   end
