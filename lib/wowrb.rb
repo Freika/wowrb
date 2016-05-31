@@ -118,13 +118,13 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.data_character(parametr)
-    remote_url = "#{url}/data/character/#{parametr}?#{credentials}"
+  def self.data_character(parameter)
+    remote_url = "#{url}/data/character/#{parameter}?#{credentials}"
     call_api(remote_url)
   end
 
-  def self.data_guild(parametr)
-    remote_url = "#{url}/data/guild/#{parametr}?#{credentials}"
+  def self.data_guild(parameter)
+    remote_url = "#{url}/data/guild/#{parameter}?#{credentials}"
     call_api(remote_url)
   end
 

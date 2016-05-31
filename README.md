@@ -43,7 +43,7 @@ TW: `zh_TW`
 
 `Wowrb.auction_url(realm_name)` returns url and last modified time for given realm.
 
-`Wowrb.boss(boss_id = nil)` returns a list of all supported bosses. If specify the 'boss_id' parametr will be returns information about bosses.
+`Wowrb.boss(boss_id = nil)` returns a list of all supported bosses. If specify the 'boss_id' parameter will be returns information about bosses.
 
 `Wowrb.region_leaderboard` returns the top 100 results gathered for each map for all of the available realm leaderboards in a region.
 
@@ -77,13 +77,13 @@ TW: `zh_TW`
 
 `Wowrb.spell(spell_id)` returns some information about spells.
 
-`Wowrb.zone(zone_id = nil)` returns list of all supported zones and their bosses if specify 'zone_id' parametr will be returns some information about zones.
+`Wowrb.zone(zone_id = nil)` returns list of all supported zones and their bosses if specify 'zone_id' parameter will be returns some information about zones.
 
 `Wowrb.data_battlegroups` returns the list of battlegroups for this region.
 
-`Wowrb.data_character(parametr)` returns a list of each race and their associated faction, name, unique ID, and skin with the 'races' parametr. Returns a list of character classes with the 'classes' parametr. Returns a list of all of the achievements that characters can earn as well as the category structure and hierarchy with the 'achievements' parametr. 
+`Wowrb.data_character(parameter)` returns a list of each race and their associated faction, name, unique ID, and skin with the 'races' parameter. Returns a list of character classes with the 'classes' parameter. Returns a list of all of the achievements that characters can earn as well as the category structure and hierarchy with the 'achievements' parameter. 
 
-`Wowrb.data_guild(parametr)` returns a list of all guild rewards with the 'rewards' parametr. Returns a list of all guild perks with the 'perks' parametr. Returns a list of all of the achievements that guilds can earn as well as the category structure and hierarchy with the 'achievements' parametr.
+`Wowrb.data_guild(parameter)` returns a list of all guild rewards with the 'rewards' parameter. Returns a list of all guild perks with the 'perks' parameter. Returns a list of all of the achievements that guilds can earn as well as the category structure and hierarchy with the 'achievements' parameter.
 
 `Wowrb.data_item_classes` returns a list of item classes.
 
