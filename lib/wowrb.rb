@@ -38,7 +38,7 @@ module Wowrb
   end
     
   def self.guild(realm, guild_name, fields = nil)
-  	remote_url = "#{url}/guild/#{realm}/#{guild_name}?"
+	remote_url = "#{url}/guild/#{realm}/#{guild_name}?"
 	remote_url += "fields=#{fields}&" if fields
 	remote_url += "#{credentials}"
     call_api(remote_url)
@@ -74,9 +74,9 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.pet_stats(stats_id, level, breed_id, quality_id)
+  def self.pet_stats(stats_id, level = nil, breed_id = nil, quality_id = nil)
   	remote_url = "#{url}/pet/stats/#{stats_id}?"
-	remote_url += "level=#{fields}&" if level
+	remote_url += "level=#{level}&" if level
 	remote_url += "breedId=#{breed_id}&" if breed_id
 	remote_url += "qualityId=#{quality_id}&" if quality_id
 	remote_url += "#{credentials}"
