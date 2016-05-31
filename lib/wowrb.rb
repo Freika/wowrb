@@ -15,13 +15,8 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.boss(boss_id)
+  def self.boss(boss_id = nil)
     remote_url = "#{url}/boss/#{boss_id}?#{credentials}"
-    call_api(remote_url)
-  end
-
-  def self.boss_list
-    remote_url = "#{url}/boss/?#{credentials}"
     call_api(remote_url)
   end
 
@@ -35,18 +30,116 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.character(realm, character_name)
-    remote_url = "#{url}/character/#{realm}/#{character_name}?#{credentials}"
+  def self.character(realm, character_name, fields = nil)
+	remote_url = "#{url}/character/#{realm}/#{character_name}?"
+	remote_url += "fields=#{fields}&" if fields
+	remote_url += "#{credentials}"
     call_api(remote_url)
   end
-
-  def self.achievements(realm, character_name, fields)
-    remote_url = "#{url}/character/#{realm}/#{character_name}?fields=#{fields}&#{credentials}"
+    
+  def self.guild(realm, guild_name, fields = nil)
+	remote_url = "#{url}/guild/#{realm}/#{guild_name}?"
+	remote_url += "fields=#{fields}&" if fields
+	remote_url += "#{credentials}"
     call_api(remote_url)
   end
 
   def self.item(item_id)
-    remote_url = "#{url}/item/#{item_id}?#{credentials}"
+  	remote_url = "#{url}/item/#{item_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.item_set(set_id)
+    remote_url = "#{url}/item/set/#{set_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.mount
+    remote_url = "#{url}/mount/?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.pet
+    remote_url = "#{url}/pet/?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.pet_ability(ability_id)
+    remote_url = "#{url}/pet/ability/#{ability_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.pet_species(species_id)
+    remote_url = "#{url}/pet/species/#{species_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.pet_stats(stats_id, level = nil, breed_id = nil, quality_id = nil)
+  	remote_url = "#{url}/pet/stats/#{stats_id}?"
+	remote_url += "level=#{level}&" if level
+	remote_url += "breedId=#{breed_id}&" if breed_id
+	remote_url += "qualityId=#{quality_id}&" if quality_id
+	remote_url += "#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.pvp(bracket)
+    remote_url = "#{url}/leaderboard/#{bracket}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.quest(quest_id)
+    remote_url = "#{url}/quest/#{quest_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.realm_status
+    remote_url = "#{url}/realm/status?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.recipe(recipe_id)
+    remote_url = "#{url}/recipe/#{recipe_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.spell(spell_id)
+    remote_url = "#{url}/spell/#{spell_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.zone(zone_id = nil)
+    remote_url = "#{url}/zone/#{zone_id}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.data_battlegroups 
+    remote_url = "#{url}/data/battlegroups/?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.data_character(parameter)
+    remote_url = "#{url}/data/character/#{parameter}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.data_guild(parameter)
+    remote_url = "#{url}/data/guild/#{parameter}?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.data_item_classes
+    remote_url = "#{url}/data/item/classes?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.data_talents
+    remote_url = "#{url}/data/talents?#{credentials}"
+    call_api(remote_url)
+  end
+
+  def self.data_pet_types
+    remote_url = "#{url}/data/pet/types?#{credentials}"
     call_api(remote_url)
   end
 
