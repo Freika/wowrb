@@ -162,11 +162,11 @@ module Wowrb
   private_class_method :credentials
 
   def self.check
-    if ENV['BATTLE_NET_KEY'] != true
+    if ENV['BATTLE_NET_KEY'].nil? || ENV['BATTLE_NET_KEY'].empty?
       "You must to set api_key"
-    elsif ENV['BATTLE_NET_REGION'] != true
+    elsif ENV['BATTLE_NET_REGION'].nil? || ENV['BATTLE_NET_REGION'].empty?
       "You must to set region"
-    elsif ENV['BATTLE_NET_LOCALE'] != true
+    elsif ENV['BATTLE_NET_LOCALE'].nil? || ENV['BATTLE_NET_LOCALE'].empty?
       "You must to set locale"
     else
       true
