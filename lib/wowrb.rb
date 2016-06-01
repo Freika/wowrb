@@ -45,7 +45,7 @@ module Wowrb
   end
 
   def self.item(item_id)
-  	remote_url = "#{url}/item/#{item_id}?#{credentials}"
+    remote_url = "#{url}/item/#{item_id}?#{credentials}"
     call_api(remote_url)
   end
 
@@ -162,9 +162,14 @@ module Wowrb
   private_class_method :credentials
 
   def self.call_api(remote_url)
-    encoded_url = URI.encode(remote_url)
-    response = HTTParty.get(encoded_url)
-    JSON.parse(response.body)
-  end
+    if ENV['BATTLE_NET_KEY'].nil?; "You must to set api_key"
+    elsif ENV['BATTLE_NET_REGION'].nil?; "You must to set region"
+    elsif ENV['BATTLE_NET_LOCALE'].nil?; "You must to set locale"
+    else
+        encoded_url = URI.encode(remote_url)
+        response = HTTParty.get(encoded_url)
+        JSON.parse(response.body)
+    end
+end
   private_class_method :call_api
 end
