@@ -161,7 +161,33 @@ module Wowrb
   end
   private_class_method :credentials
 
+  def self.check
+    if ENV['BATTLE_NET_KEY'].nil?
+        "You must to set api_key"
+    elsif ENV['BATTLE_NET_REGION'].nil?
+        "You must to set region"
+    elsif ENV['BATTLE_NET_LOCALE'].nil?
+        "You must to set locale"
+    else
+        true
+    end 
+  end
+
   def self.call_api(remote_url)
+    if check == true
+        encoded_url = URI.encode(remote_url)
+        response = HTTParty.get(encoded_url)
+        JSON.parse(response.body)
+    else
+       check
+    end
+  end
+  private_class_method :call_api
+
+end
+
+
+=begin
     if ENV['BATTLE_NET_KEY'].nil?; "You must to set api_key"
     elsif ENV['BATTLE_NET_REGION'].nil?; "You must to set region"
     elsif ENV['BATTLE_NET_LOCALE'].nil?; "You must to set locale"
@@ -170,6 +196,26 @@ module Wowrb
         response = HTTParty.get(encoded_url)
         JSON.parse(response.body)
     end
-end
-  private_class_method :call_api
-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+      def self.check
+    if ENV['BATTLE_NET_KEY'] || ENV['BATTLE_NET_REGION'] || ENV['BATTLE_NET_LOCALE']
+        ENV['BATTLE_NET_KEY'] ? true : "You must to set api_key"
+        ENV['BATTLE_NET_REGION'] ? true : "You must to set region"
+        ENV['BATTLE_NET_LOCALE'] ? true : "You must to set locale"
+    else
+        true
+    end
+  end
+=end
