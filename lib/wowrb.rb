@@ -162,22 +162,20 @@ module Wowrb
   private_class_method :credentials
 
   def self.check_environment_variables
-    env_variables_missing = ENV['BATTLE_NET_KEY'].nil? || ENV['BATTLE_NET_REGION'].nil? || ENV['BATTLE_NET_LOCALE'].nil?
-    message =  'Env variables missing:' if env_variables_missing
-    message += " ENV['BATTLE_NET_KEY']" if ENV['BATTLE_NET_KEY'].nil?
-    message += " ENV['BATTLE_NET_REGION']" if ENV['BATTLE_NET_REGION'].nil?
-    message += " ENV['BATTLE_NET_LOCALE']" if ENV['BATTLE_NET_LOCALE'].nil?
-    message if env_variables_missing
+    checked_env_vars = %w(BATTLE_NET_KEY BATTLE_NET_REGION BATTLE_NET_LOCALE)
+    missing_env_vars = checked_env_vars.select { |env_var| ENV.fetch(env_var, '').empty? }
+    message = missing_env_vars.map { |env_var| "ENV['#{env_var}']" }.join(', ')
+    "Env variables missing: #{message}" if missing_env_vars.any?
   end
   
   def self.call_api(remote_url)
-    check = check_environment_variables
-    if check == nil
+    #check = check_environment_variables
+    if check_environment_variables == nil
       encoded_url = URI.encode(remote_url)
       response = HTTParty.get(encoded_url)
       JSON.parse(response.body)
     else
-      check
+      check_environment_variables
     end
   end
   private_class_method :call_api
