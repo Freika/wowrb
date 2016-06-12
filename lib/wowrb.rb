@@ -169,7 +169,6 @@ module Wowrb
   end
   
   def self.call_api(remote_url)
-    #check = check_environment_variables
     if check_environment_variables == nil
       encoded_url = URI.encode(remote_url)
       response = HTTParty.get(encoded_url)
