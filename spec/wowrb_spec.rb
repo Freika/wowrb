@@ -37,8 +37,4 @@ require 'spec_helper'
     expect(Wowrb.region_leaderboard).to eq("Env variables missing: ENV['BATTLE_NET_KEY'], ENV['BATTLE_NET_REGION'], ENV['BATTLE_NET_LOCALE']")
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
-  end
-
   end
