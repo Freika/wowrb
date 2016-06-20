@@ -163,8 +163,11 @@ module Wowrb
 
   def self.check_environment_variables
     checked_env_vars = %w(BATTLE_NET_KEY BATTLE_NET_REGION BATTLE_NET_LOCALE)
+    
     missing_env_vars = checked_env_vars.select { |env_var| ENV.fetch(env_var, '').empty? }
+    
     message = missing_env_vars.map { |env_var| "ENV['#{env_var}']" }.join(', ')
+    
     "Env variables missing: #{message}" if missing_env_vars.any?
   end
   
@@ -178,5 +181,4 @@ module Wowrb
     end
   end
   private_class_method :call_api
-
 end
