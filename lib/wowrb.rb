@@ -45,7 +45,7 @@ module Wowrb
   end
 
   def self.item(item_id)
-  	remote_url = "#{url}/item/#{item_id}?#{credentials}"
+    remote_url = "#{url}/item/#{item_id}?#{credentials}"
     call_api(remote_url)
   end
 
@@ -161,10 +161,24 @@ module Wowrb
   end
   private_class_method :credentials
 
+  def self.check_environment_variables
+    checked_env_vars = %w(BATTLE_NET_KEY BATTLE_NET_REGION BATTLE_NET_LOCALE)
+    
+    missing_env_vars = checked_env_vars.select { |env_var| ENV.fetch(env_var, '').empty? }
+    
+    message = missing_env_vars.map { |env_var| "ENV['#{env_var}']" }.join(', ')
+    
+    "Env variables missing: #{message}" if missing_env_vars.any?
+  end
+  
   def self.call_api(remote_url)
-    encoded_url = URI.encode(remote_url)
-    response = HTTParty.get(encoded_url)
-    JSON.parse(response.body)
+    if check_environment_variables == nil
+      encoded_url = URI.encode(remote_url)
+      response = HTTParty.get(encoded_url)
+      JSON.parse(response.body)
+    else
+      check_environment_variables
+    end
   end
   private_class_method :call_api
 end
