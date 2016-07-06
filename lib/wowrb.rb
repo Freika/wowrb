@@ -31,16 +31,16 @@ module Wowrb
   end
 
   def self.character(realm, character_name, fields = nil)
-	remote_url = "#{url}/character/#{realm}/#{character_name}?"
-	remote_url += "fields=#{fields}&" if fields
-	remote_url += "#{credentials}"
+  	remote_url = "#{url}/character/#{realm}/#{character_name}?"
+  	remote_url += "fields=#{fields}&" if fields
+  	remote_url += "#{credentials}"
     call_api(remote_url)
   end
-    
+
   def self.guild(realm, guild_name, fields = nil)
-	remote_url = "#{url}/guild/#{realm}/#{guild_name}?"
-	remote_url += "fields=#{fields}&" if fields
-	remote_url += "#{credentials}"
+  	remote_url = "#{url}/guild/#{realm}/#{guild_name}?"
+  	remote_url += "fields=#{fields}&" if fields
+  	remote_url += "#{credentials}"
     call_api(remote_url)
   end
 
@@ -76,10 +76,11 @@ module Wowrb
 
   def self.pet_stats(stats_id, level = nil, breed_id = nil, quality_id = nil)
   	remote_url = "#{url}/pet/stats/#{stats_id}?"
-	remote_url += "level=#{level}&" if level
-	remote_url += "breedId=#{breed_id}&" if breed_id
-	remote_url += "qualityId=#{quality_id}&" if quality_id
-	remote_url += "#{credentials}"
+  	remote_url += "level=#{level}&" if level
+  	remote_url += "breedId=#{breed_id}&" if breed_id
+  	remote_url += "qualityId=#{quality_id}&" if quality_id
+  	remote_url += "#{credentials}"
+
     call_api(remote_url)
   end
 
@@ -113,7 +114,7 @@ module Wowrb
     call_api(remote_url)
   end
 
-  def self.data_battlegroups 
+  def self.data_battlegroups
     remote_url = "#{url}/data/battlegroups/?#{credentials}"
     call_api(remote_url)
   end
@@ -163,18 +164,19 @@ module Wowrb
 
   def self.check_environment_variables
     checked_env_vars = %w(BATTLE_NET_KEY BATTLE_NET_REGION BATTLE_NET_LOCALE)
-    
+
     missing_env_vars = checked_env_vars.select { |env_var| ENV.fetch(env_var, '').empty? }
-    
+
     message = missing_env_vars.map { |env_var| "ENV['#{env_var}']" }.join(', ')
-    
+
     "Env variables missing: #{message}" if missing_env_vars.any?
   end
-  
+
   def self.call_api(remote_url)
     if check_environment_variables == nil
       encoded_url = URI.encode(remote_url)
       response = HTTParty.get(encoded_url)
+
       JSON.parse(response.body)
     else
       check_environment_variables
